@@ -115,7 +115,7 @@ Metrics.prototype.handshaken = function handshaken(data) {
  * @api public
  */
 Metrics.prototype.close = function close(data) {
-  this.disconnections++;
+  this.disconnects++;
   this.read += data.read;
   this.send += data.send;
 

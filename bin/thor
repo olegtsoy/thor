@@ -79,7 +79,7 @@ Object.keys(cluster.workers).forEach(function each(id) {
 
       case 'close':
         delete ids[data.id];
-
+        --connections;
         metrics.close(data);
         break;
 
@@ -116,7 +116,7 @@ function live() {
 
   live.interval = setInterval(function tick() {
     var active = Object.keys(concurrents).reduce(function (count, id) {
-      return count + (concurrents[id] || 0);
+      return concurrents[id] || 0;
     }, 0);
 
     process.stdout.write('\r'+ frames[i++ % len] +' Progress :: '.white + [
